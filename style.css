@@ -315,6 +315,44 @@ section h2::after {
     font-size: 0.95rem;
 }
 
+/* ===== Philosophy ===== */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.philosophy-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.philosophy-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.philosophy-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+}
+
+.philosophy-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
 /* ===== Contact ===== */
 .contact {
     text-align: center;

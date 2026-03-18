@@ -57,7 +57,7 @@
     <div class="container">
         <a href="/" class="back">← Back to portfolio</a>
         <h1>Privacy Policy</h1>
-        <p class="date">Effective date: March 16, 2026</p>
+        <p class="date">Effective date: March 18, 2026</p>
 
         <p>Vortex Emulator ("the App") is developed by JosuSM. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our App.</p>
 
@@ -66,43 +66,79 @@
         <ul>
             <li>No accounts or registration are required.</li>
             <li>No analytics, tracking, or advertising SDKs are included.</li>
+            <li>No crash reporting services are integrated.</li>
             <li>No personal information is collected, shared, or sold.</li>
         </ul>
 
-        <h2>2. Local Storage</h2>
+        <h2>2. Supported Platforms</h2>
+        <p>The App supports 25+ retro gaming platforms through libretro cores and standalone emulator integrations, including NES, SNES, N64, Game Boy, GBA, NDS, PSX, PSP, PS2, Dreamcast, Saturn, GameCube, Wii, 3DS, Arcade, and others. Core libraries are downloaded on demand and cached locally on your device.</p>
+
+        <h2>3. Local Storage</h2>
         <p>The App stores data locally on your device for functionality purposes:</p>
         <ul>
-            <li><strong>ROM files</strong> you choose to open (read-only access).</li>
-            <li><strong>Save states and battery saves</strong> for your games.</li>
-            <li><strong>App preferences</strong> (display settings, control layouts).</li>
-            <li><strong>Emulation core libraries</strong> downloaded from official libretro repositories.</li>
+            <li><strong>Game library database</strong> — ROM paths, platform metadata, cover art references, and playtime statistics.</li>
+            <li><strong>ROM files</strong> you choose to open.</li>
+            <li><strong>Save files and save states</strong> for your games (up to 10 quick-save slots per game).</li>
+            <li><strong>Rewind buffer</strong> — temporary in-memory state snapshots for the rewind feature.</li>
+            <li><strong>System files</strong> (BIOS) required by certain emulation cores.</li>
+            <li><strong>App preferences</strong> — display settings, control layouts, and per-core configurations.</li>
+            <li><strong>Emulation core libraries</strong> downloaded from official libretro build servers.</li>
+            <li><strong>ROM patch backups</strong> — original ROM files are automatically backed up before applying IPS, UPS, BPS, xdelta, PPF, or APS patches.</li>
         </ul>
         <p>All of this data stays on your device and is never transmitted externally.</p>
 
-        <h2>3. Storage Permissions</h2>
-        <p>The App may request storage permissions to access ROM files stored on your device. This access is used solely to load game files you select. No files are uploaded, shared, or accessed beyond your explicit selection.</p>
-
-        <h2>4. Internet Access</h2>
-        <p>The App uses internet access for:</p>
+        <h2>4. Permissions</h2>
+        <p>The App may request the following permissions:</p>
         <ul>
-            <li>Downloading emulation core libraries from official open-source repositories.</li>
-            <li>Optional multiplayer features (LAN and internet netplay), where only game input data is exchanged between connected players during a session.</li>
+            <li><strong>Storage access</strong> — to read ROM files and write save data. On Android 11+, broad file access may be requested to navigate your ROM library.</li>
+            <li><strong>Internet</strong> — to download emulation cores, standalone emulator APKs, and for multiplayer features.</li>
+            <li><strong>Network state</strong> — to detect offline status before attempting downloads.</li>
+            <li><strong>Install packages</strong> — to install standalone emulator APKs downloaded from official GitHub repositories (e.g., PPSSPP, Dolphin, Lime3DS, DuckStation, Flycast).</li>
+            <li><strong>Foreground service</strong> — to maintain audio playback during background emulation.</li>
+            <li><strong>Vibration</strong> — for haptic feedback on touch controls.</li>
+            <li><strong>Wake lock</strong> — to keep the screen on during gameplay.</li>
         </ul>
-        <p>No personal data is transmitted during these operations.</p>
+        <p>No permission is used to collect or transmit personal data.</p>
 
-        <h2>5. Multiplayer</h2>
-        <p>When using the multiplayer feature, the App exchanges game controller input data with other connected players in real-time. No personal information, device identifiers, or location data is shared. Multiplayer sessions are temporary and no data is retained after disconnection.</p>
+        <h2>5. Internet Access</h2>
+        <p>The App uses internet access exclusively for:</p>
+        <ul>
+            <li><strong>Downloading libretro cores</strong> from the official libretro build server on first use, then cached locally.</li>
+            <li><strong>Downloading standalone emulators</strong> from their official GitHub Releases pages (via the GitHub API).</li>
+            <li><strong>Multiplayer lobby and netplay</strong> — connecting to the Vortex lobby server for room creation, matchmaking, and encrypted input relay (see Section 6).</li>
+        </ul>
+        <p>No personal data, device identifiers, or telemetry is transmitted during any of these operations. The App operates fully offline once cores are cached.</p>
 
-        <h2>6. Third-Party Services</h2>
-        <p>Vortex Emulator does not integrate any third-party services that collect user data (no ads, no analytics, no crash reporting services).</p>
+        <h2>6. Multiplayer &amp; Netplay</h2>
+        <p>The App provides online multiplayer through a WebSocket-based lobby server. When using this feature:</p>
+        <ul>
+            <li>A <strong>random anonymous player ID</strong> is generated locally for each session — no login, account, or personal identifier is used.</li>
+            <li>Game input data exchanged between players is <strong>end-to-end encrypted</strong> using AES-256-GCM. The relay server cannot read game data (zero-knowledge design).</li>
+            <li>Rooms can be <strong>password-protected</strong> and support 2–8 players with optional region filtering and in-lobby chat.</li>
+            <li>No personal information, device identifiers, or location data is shared with other players or the server.</li>
+            <li>Multiplayer sessions are <strong>temporary</strong> — no data is retained after disconnection.</li>
+        </ul>
 
-        <h2>7. Children's Privacy</h2>
+        <h2>7. Standalone Emulator Integration</h2>
+        <p>The App can launch games in standalone emulator apps installed on your device (e.g., PPSSPP, Dolphin, DuckStation, Lime3DS, DraStic, Flycast, Vita3K, RetroArch, and others). When you choose to install a standalone emulator through the App, the APK is downloaded directly from the emulator's official GitHub repository. The App does not modify, wrap, or intercept any data handled by standalone emulators — each runs under its own privacy policy.</p>
+
+        <h2>8. Third-Party Services</h2>
+        <p>Vortex Emulator does not integrate any third-party services that collect user data. Specifically:</p>
+        <ul>
+            <li>No advertising SDKs.</li>
+            <li>No analytics or telemetry services.</li>
+            <li>No crash reporting services (e.g., Firebase, Sentry).</li>
+            <li>No Google Play services dependency.</li>
+        </ul>
+        <p>The only external connections are to the libretro build server (core downloads), the GitHub API (standalone emulator downloads), and the self-hosted Vortex lobby server (multiplayer).</p>
+
+        <h2>9. Children's Privacy</h2>
         <p>The App does not knowingly collect any information from children. As the App collects no personal data from any user, it is compliant with COPPA and similar regulations.</p>
 
-        <h2>8. Changes to This Policy</h2>
+        <h2>10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.</p>
 
-        <h2>9. Contact</h2>
+        <h2>11. Contact</h2>
         <p>If you have questions about this Privacy Policy, you can reach us at:</p>
         <ul>
             <li>GitHub: <a href="https://github.com/JosuSM" target="_blank" rel="noopener noreferrer">github.com/JosuSM</a></li>
